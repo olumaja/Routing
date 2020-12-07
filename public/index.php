@@ -1,5 +1,5 @@
 <?php
 
-    require_once '../core/config.php';
+    require_once '../vendor/autoload.php';
 
-    echo PUBLIC_PATH;
+    (new App\Application())->mount();

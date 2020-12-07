@@ -7,5 +7,14 @@
             "email": "olumajasegun@gmai.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4":{
+            "App\\": "App/"
+        },
+        "files": [
+            "core/config.php",
+            "core/route.php"
+        ]
+    }
 }
