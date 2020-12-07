@@ -1,0 +1,11 @@
+{
+    "name": "hp/wp-analytics",
+    "description": "WP_Analytics_Routine",
+    "authors": [
+        {
+            "name": "Olumaja",
+            "email": "olumajasegun@gmai.com"
+        }
+    ],
+    "require": {}
+}
