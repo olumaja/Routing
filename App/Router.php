@@ -6,7 +6,6 @@
 
         protected $serverInfo;
         protected $requestedUrl = '/';
-        protected $requestMethod = 'get';
         protected static $routes = [];
         protected static $allowedHttpMethods = ['get', 'post', 'patch', 'put', 'delete'];
 
@@ -15,9 +14,9 @@
         }
 
         public function executeUrl(){
-            //$this->requestedUrl = getRequestedUrl();
+            
            $url = $this->getRequestedUrl();
-           $this->requestMethod = strtolower($_SERVER['REQUEST_METHOD']);
+           $requestMethod = strtolower($_SERVER['REQUEST_METHOD']);
            $foundRoute = null;
 
            foreach(static::$routes as $route){
@@ -26,7 +25,7 @@
                    $route['path'] = '/' . $route['path'];
                }
 
-               if($route['path'] === $url && $route['method'] === $this->requestMethod){
+               if($route['path'] === $url && $route['method'] === $requestMethod){
                    $foundRoute = $route;
                    break;
                }

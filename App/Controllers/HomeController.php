@@ -5,6 +5,6 @@
     class HomeController extends BaseController{
 
         public function index(){
-            echo 'Welcome home';
+            $this->loadView('dashboard', ['title' => 'Dashboard']);
         }
     }
