@@ -2,6 +2,7 @@
     include_once 'partials/header.php';
 ?>
 <body class="container--signin">
+    
 <form class="my-form" action="/auth/login" method="post">
     <div class="signin--logo">
         <span>Logo</span>
