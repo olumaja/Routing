@@ -43,7 +43,7 @@
         public function parseConfigLines(array $lines){
             foreach($lines as $item){
                 $parts = explode('=', $item);
-                if(count($parts === 2)){
+                if(count($parts) === 2){
                     $key = $parts[0];
                     $value = str_ireplace('"', '', $parts[1]);
                     $_ENV[$key] = $value;
