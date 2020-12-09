@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label>Password</label>
-        <input type="password" name="password" class="form-control" >
+        <input type="password" name="password" class="form-control" placeholder="password">
     </div>
     <input type="submit" value="Sign in" class="btn btn-primary sign-btn">
     <span class="sign-up-text">
