@@ -18,7 +18,8 @@
             if(!$user)  {
                 return $this->redirect('/auth/login?msg=unable to login');
             }
-    
+            
+            //password_verify is a php built in function
             if(!password_verify($password, $user->password)) {
                 $this->redirect('/auth/login?msg=unable to login');
             }
