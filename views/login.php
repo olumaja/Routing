@@ -12,7 +12,7 @@
     <h6 class="signin-subtitle">Please enter your credentials to proceed.</h6>
     <div class="form-group">
         <label>Email address</label>
-        <input type="text" name="email" class="form-control" placeholder="samplemail@mail.com">
+        <input type="email" name="email" class="form-control" placeholder="samplemail@mail.com">
         <small>Forgot password?</small>
     </div>
     <div class="form-group">
@@ -22,7 +22,7 @@
     <input type="submit" value="Sign in" class="btn btn-primary sign-btn">
     <span class="sign-up-text">
         <span>Dont’ have an account? </span>
-        <a href="/">Sign up</a>
+        <a href="/auth/register">Sign up</a>
       </span>
 </form>
 </body>

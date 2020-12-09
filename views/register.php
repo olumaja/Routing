@@ -3,7 +3,7 @@
 ?>
 <body class="container--signin">
     
-    <form class="my-form">
+    <form class="my-form" action="/auth/register" method="post">
       <div class="signin-logo">
        <span> Logo</span>
       </div>
@@ -19,7 +19,7 @@
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" name="email" value="passwordpassword" class="form-control" >
+        <input type="password" name="password" placeholder="password" class="form-control" >
       </div>
       <input type="submit" value="Sign in" class="btn btn-primary sign-btn">
       <span class="sign-up-text">

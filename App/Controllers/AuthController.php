@@ -1,6 +1,7 @@
 <?php
 
     namespace App\Controllers;
+    use App\Model\User;
 
     class AuthController extends BaseController{
 
@@ -32,41 +33,35 @@
         }
 
         public function processReg()
-    {
-        $email = $this->request->param('email');
-        $password = $this->request->param('password');
-        $name = $this->request->param('name');
+        {
+            $email = $this->request->param('email');
+            $password = $this->request->param('password');
+            $name = $this->request->param('name');
 
-        //More validation to be done here
-        if($email == "" || $name == "" || $password == ""){
-            throw new Exception("Invalid creditials");
+            //More validation to be done here
+            // if($email == "" || $name == "" || $password == ""){
+            //     throw new \Exception("Invalid creditials");
+            // }
+
+            $result = User::create([
+                'email' => $email,
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+                'name' => $name
+            ]);
+
+
+            if(!$result) {
+                
+                $this->redirect('/auth/login?msg=error');
+                return;
+            }
+
+            $this->redirect('/auth/login?msg=success');
+
         }
-
-        $result = User::create([
-            'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
-            'name' => $name
-        ]);
-
-
-        if(!$result) {
-            
-            $this->redirect('/auth/login?msg=error');
-            return;
-        }
-
-        $this->redirect('/auth/login?msg=success');
-
-    }
 
         public function param($key){
             return isset($_GET[$key]) ? $_GET[$key] : "";
         }
-
-        // public function store(){
-        //     $email = $this->request->param('email');
-        //     $password = $this->request->param('password');
-        //     $this->redirect('/');
-        // }
 
     }
