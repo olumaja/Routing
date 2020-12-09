@@ -1,8 +1,11 @@
-.body{
+.container--dashboard{
+    @extend .d-flex;
+    @extend .justify-content-center;
+    @extend .align-items-center;
     background-color: $lightpurple;
 }
 
-.wrapper {
+.d-wrapper {
     font-family: 'Rubik', sans-serif;
     background-color: $lightpurple;
     height: 100vh;
@@ -108,7 +111,7 @@ input{
     outline: none;
 
     &::placeholder{
-        color: $search-bar;
+        // color: $search-bar;
         font-weight: 400;
         font-size: 0.875rem;
     }

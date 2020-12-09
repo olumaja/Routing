@@ -1,8 +1,8 @@
 <?php
     include_once 'partials/header.php';
 ?>
-<body class="body">
-<div class="wrapper">
+<body class="container--dashboard">
+<div class="d-wrapper">
     <div class="sidebar">
         <div class="menu">
                 <span class="logo-white">
