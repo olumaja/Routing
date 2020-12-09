@@ -1,6 +1,8 @@
 <?php
 
     namespace App;
+    use App\Database\DB;
+    use App\Database\MeekrolDB;
 
     class Application{
 
