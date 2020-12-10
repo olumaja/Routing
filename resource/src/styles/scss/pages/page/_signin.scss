@@ -89,3 +89,21 @@
         color:$white;
     }
 }
+
+.alert{
+    margin: 10px 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.alert-danger{
+    background-color: red;
+}
+
+.alert-success{
+    background-color: green;
+}
+
+.alert-info{
+    background-color: rgb(156, 156, 248);
+}

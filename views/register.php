@@ -4,6 +4,9 @@
 <body class="container--signin">
     
     <form class="my-form" action="/auth/register" method="post">
+      <?php
+          include_once "partials/flashMessages.php";
+      ?>
       <div class="signin-logo">
        <span> Logo</span>
       </div>

@@ -52,6 +52,9 @@
             <div class="content-wrapper">
                 <div class="title-wrap">
                     <h3 class="page-title">Dashboard</h3>
+                    <?php
+                        include_once 'partials/flashMessages.php';
+                    ?>
                 </div>
                 <div class="content-area">
                     <div class="grid-area">

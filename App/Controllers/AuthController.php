@@ -47,10 +47,17 @@
             $password = $this->request->param('password');
             $name = $this->request->param('name');
 
-            //More validation to be done here
-            // if($email == "" || $name == "" || $password == ""){
-            //     throw new \Exception("Invalid creditials");
-            // }
+            $old = User::findByEmail($email);
+            if($old) {
+                $this->session->setFlash('error', 'Email address already in use');
+                return $this->redirect('/auth/register');
+            }
+
+            if(!$email || !$password || !$name) {
+                $this->session->setFlash('error', 'You must provide all required data');
+                return $this->redirect('/auth/register');
+            }
+
 
             $result = User::create([
                 'email' => $email,
@@ -60,7 +67,7 @@
 
 
             if(!$result) {
-                $this->setFlash('error', 'Unable to create account, try again later');
+                $this->session->setFlash('error', 'unable to create user account');
                 $this->redirect('/auth/login?msg=error');
                 return;
             }
