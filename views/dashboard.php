@@ -26,7 +26,7 @@
         </div>
         <div class="signout">
                 <span class="">
-                    <a href="/auth/login" class="signout-link">
+                    <a href="/auth/logout" class="signout-link">
                         <img src="/images/signout.svg" alt="">
                     </a>
                 </span>

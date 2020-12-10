@@ -14,19 +14,27 @@
             $email = $this->request->param('email');
             $password = $this->request->param('password');
     
-            $user = User::findByEmail($email);
-            if(!$user)  {
-                return $this->redirect('/auth/login?msg=unable to login');
-            }
-            
-            //password_verify is a php built in function
-            if(!password_verify($password, $user->password)) {
-                $this->redirect('/auth/login?msg=unable to login');
-            }
+            try {
+                $user = User::findByEmail($email);
     
-            // set session
-            User::updateLastLogin($user->id);
-            $this->redirect('/');
+                if(!$user)  {
+                   throw new \Exception('unable to login');
+                }
+    
+                if(!password_verify($password, $user->password)) {
+                   throw new \Exception('unable to login');
+                }
+    
+                // set session
+                User::updateLastLogin($user->id);
+                $this->session->set(USER_SESSION_KEY_NAME, $user->id);
+                $this->session->setFlash('success', sprintf( 'Welcome %s!', $user->name));
+                $this->redirect('/');
+    
+            } catch (\Exception $e) {
+                $this->session->setFlash('error', $e->getMessage());
+                $this->redirect('/auth/login');
+            }
         }
 
         public function register(){
@@ -52,13 +60,18 @@
 
 
             if(!$result) {
-                
+                $this->setFlash('error', 'Unable to create account, try again later');
                 $this->redirect('/auth/login?msg=error');
                 return;
             }
 
             $this->redirect('/auth/login?msg=success');
 
+        }
+
+        public function logout(){
+            $this->session->delete();
+            $this->redirect('/auth/login?msg=logged-out');
         }
 
         public function param($key){

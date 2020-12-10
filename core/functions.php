@@ -29,3 +29,7 @@ function meekrodb_debugmode_handler($params) {
         echo "<br>\n";
     }
 }
+
+function displayFlash($key){
+    return \App\Http\Session::getInstance()->getFlash($key);
+}

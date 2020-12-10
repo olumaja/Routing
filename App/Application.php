@@ -8,6 +8,7 @@
 
         public function __construct(){
 
+            $this->startSession();
             $this->loadConfig();
             $this->mount();
         }
@@ -51,6 +52,10 @@
                     $_ENV[$key] = $value;
                 }
             }
+        }
+
+        protected function startSession(){
+            session_start();
         }
 
     }

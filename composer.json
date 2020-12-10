@@ -7,7 +7,9 @@
             "email": "olumajasegun@gmai.com"
         }
     ],
-    "require": {},
+    "require": {
+        "aura/session": "^2.1"
+    },
     "autoload": {
         "psr-4":{
             "App\\": "App/"
