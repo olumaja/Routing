@@ -3,16 +3,18 @@
     namespace App\Controllers;
     use App\Http\Request;
     use App\Http\Session;
+    use App\Http\InputValidation;
 
     abstract class BaseController{
 
         protected $request;
         protected $session;
+        protected $validInput;
 
         public function __construct(){
             $this->request = new Request();
             $this->session = Session::getInstance();
-            
+            $this->validInput = new InputValidation();
         }
 
         public function loadView($name, $data = []){

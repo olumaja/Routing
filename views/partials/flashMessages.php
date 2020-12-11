@@ -1,7 +1,7 @@
 <?php
 
 if(displayFlash('error')){
-    echo '<div alert alert-danger>'.displayFlash('error').'</div>';
+    echo '<div class="alert alert-danger">'.displayFlash('error').'</div>';
 }
 
 if(displayFlash('info')){
@@ -9,5 +9,5 @@ if(displayFlash('info')){
 }
 
 if(displayFlash('success')){
-    echo '<div class="alert alert-success">'.displayFlash('info').'</div>';
+    echo '<div class="alert alert-success">'.displayFlash('success').'</div>';
 }

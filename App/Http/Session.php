@@ -18,7 +18,8 @@
         {
             if (self::$singleInstance == null)
             {
-                //note static is same as Session class
+                //note static is same as calling Session class
+                //That's same as- self::$singleInstance = new Session()
                 self::$singleInstance = new static();
             }
 

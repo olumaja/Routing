@@ -91,19 +91,21 @@
 }
 
 .alert{
-    margin: 10px 0;
+    margin: 10px 0; padding-top: 5px; padding-bottom: 5px;
     text-align: center;
     color: #ffffff;
 }
 
 .alert-danger{
-    background-color: red;
+    background-color: #DC3545;
 }
 
 .alert-success{
-    background-color: green;
+    background-color: #28A745;
 }
 
 .alert-info{
-    background-color: rgb(156, 156, 248);
+    background-color: #17A2B8;
 }
+
+

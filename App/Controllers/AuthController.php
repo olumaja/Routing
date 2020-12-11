@@ -15,14 +15,15 @@
             $password = $this->request->param('password');
     
             try {
+               
                 $user = User::findByEmail($email);
     
                 if(!$user)  {
-                   throw new \Exception('unable to login');
+                   throw new \Exception('Unable to login');
                 }
     
                 if(!password_verify($password, $user->password)) {
-                   throw new \Exception('unable to login');
+                   throw new \Exception('Unable to login');
                 }
     
                 // set session
@@ -45,34 +46,49 @@
         {
             $email = $this->request->param('email');
             $password = $this->request->param('password');
+            $confirmPwd = $this->request->param('confirmPwd');
             $name = $this->request->param('name');
 
-            $old = User::findByEmail($email);
-            if($old) {
-                $this->session->setFlash('error', 'Email address already in use');
-                return $this->redirect('/auth/register');
+            try{
+
+                if(empty($name) || empty($email) || empty($password) || empty($confirmPwd)){
+                    throw new \Exception('All fields are required');
+                }
+
+                if(!$this->validInput->isValidEmail($email)){
+                    throw new \Exception('Enter valid email address');
+                }
+
+                if(!$this->validInput->isValidPassword($password, $confirmPwd)){
+                    throw new \Exception("Those passwords didn't match");
+                }
+
+                if(!$this->validInput->isValidName($name)){
+                    throw new \Exception('Name must have more than one letter');
+                }
+
+                $userExist = User::findByEmail($email);
+
+                if($userExist) {
+                    throw new \Exception('Email address already exist');
+                }
+
+                $result = User::create([
+                    'email' => $email,
+                    'password' => password_hash($password, PASSWORD_DEFAULT),
+                    'name' => $name
+                ]);
+
+                if(!$result) {
+                    throw new \Exception('Unable to create user account');
+                }
+
+                $this->redirect('/auth/login?msg=success');
             }
-
-            if(!$email || !$password || !$name) {
-                $this->session->setFlash('error', 'You must provide all required data');
-                return $this->redirect('/auth/register');
+            catch(\Exception $e){
+                $this->session->setFlash('error', $e->getMessage());
+                $this->redirect('/auth/register?msg=error');
             }
-
-
-            $result = User::create([
-                'email' => $email,
-                'password' => password_hash($password, PASSWORD_DEFAULT),
-                'name' => $name
-            ]);
-
-
-            if(!$result) {
-                $this->session->setFlash('error', 'unable to create user account');
-                $this->redirect('/auth/login?msg=error');
-                return;
-            }
-
-            $this->redirect('/auth/login?msg=success');
 
         }
 

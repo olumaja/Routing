@@ -3,7 +3,7 @@
 ?>
 <body class="container--signin">
     
-    <form class="my-form" action="/auth/register" method="post">
+    <form class="my-form1" action="/auth/register" method="post">
       <?php
           include_once "partials/flashMessages.php";
       ?>
@@ -22,7 +22,11 @@
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" name="password" placeholder="password" class="form-control" >
+        <input type="password" name="password" placeholder="Password" class="form-control" >
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" name="confirmPwd" placeholder="Confirm password" class="form-control" >
       </div>
       <input type="submit" value="Sign in" class="btn btn-primary sign-btn">
       <span class="sign-up-text">

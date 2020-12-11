@@ -15,7 +15,7 @@
 
         protected function mount(){
             $route = new Router();
-            echo $route->executeUrl();
+            $route->executeUrl();
         }
 
         //load .env file
